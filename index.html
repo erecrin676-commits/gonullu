@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Birlikte İyilik Derneği — gönüllülük, dayanışma ve umut.">
+  <title>Birlikte İyilik Derneği | Birlikte Daha Güçlüyüz</title>
+  <style>
+    :root{--green:#1d5a45;--green2:#2e795a;--mint:#eaf2e9;--cream:#f8f7f1;--ink:#19372d;--muted:#63736b;--white:#fff;--gold:#e9c879}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    .topbar{background:var(--green);color:#edf5ee;font-size:.85rem;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #e8eee8}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em}
+    .brand-mark{width:44px;height:44px;border-radius:14px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:23px}
+    .brand small{display:block;color:var(--muted);font-size:.7rem;font-weight:600;letter-spacing:0}
+    .nav-links{display:flex;align-items:center;gap:25px;font-size:.93rem;font-weight:650}
+    .nav-links a:hover{color:var(--green2)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:12px 21px;font-weight:750;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--green);color:white}
+    .btn-primary:hover{background:#164532;transform:translateY(-1px)}
+    .btn-light{border:1px solid #d7e2d8;background:white;color:var(--green)}
+    .menu-toggle{display:none;background:none;border:0;font-size:1.7rem;color:var(--green);cursor:pointer}
+    .hero{background:linear-gradient(110deg,#f5f6ee 0%,#edf4eb 60%,#e0ecdf 100%);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:76px 0 82px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green2);font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:25px;height:2px;background:var(--gold)}
+    h1{font-size:clamp(2.7rem,5.3vw,4.7rem);line-height:1.04;letter-spacing:-.055em;margin:18px 0}
+    h1 span{color:var(--green2)}
+    .hero p{font-size:1.08rem;color:#5c6c62;max-width:520px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .hero-note{display:flex;align-items:center;gap:12px;margin-top:28px;color:#5e6e64;font-size:.9rem}
+    .avatar-stack{display:flex;padding-left:6px}
+    .avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:2px solid #f4f6ee;margin-left:-6px;background:#d9e8d8;font-size:.8rem}
+    .hero-art{position:relative;min-height:420px}
+    .hero-photo{position:absolute;inset:0 12px 12px 20px;border-radius:34px;overflow:hidden;background:linear-gradient(160deg,#a4b99c,#3d7656)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo-caption{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(20,55,40,.88);color:white;border-radius:18px;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .photo-caption strong{display:block;font-size:1rem}.photo-caption span{font-size:.82rem;color:#dbe9dc}
+    .floating-card{position:absolute;top:30px;left:0;background:white;border-radius:18px;padding:15px 18px;box-shadow:0 15px 40px #173c2b1a;max-width:190px}
+    .floating-card b{font-size:1.3rem;color:var(--green);display:block}.floating-card small{color:var(--muted)}
+    section{padding:82px 0}
+    .section-head{text-align:center;max-width:660px;margin:0 auto 38px}
+    .section-head h2{font-size:clamp(2rem,3.4vw,3rem);letter-spacing:-.04em;line-height:1.12;margin:12px 0}
+    .section-head p{color:var(--muted);margin:0}
+    .impact{padding:0 0 45px;background:#fff}
+    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #e3ebe3;border-radius:22px;overflow:hidden;background:#fff}
+    .impact-item{text-align:center;padding:26px 16px}
+    .impact-item+.impact-item{border-left:1px solid #e3ebe3}
+    .impact-item strong{display:block;color:var(--green);font-size:2rem;letter-spacing:-.04em}
+    .impact-item span{color:var(--muted);font-size:.9rem}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{border:1px solid #e5ebe5;border-radius:22px;overflow:hidden;background:white;transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 45px #1b493012}
+    .card-img{height:210px;background:#e5eee3;overflow:hidden}
+    .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+    .card:hover .card-img img{transform:scale(1.04)}
+    .card-body{padding:22px}
+    .tag{display:inline-block;color:var(--green2);background:var(--mint);font-size:.75rem;font-weight:800;padding:5px 10px;border-radius:999px}
+    .card h3{margin:13px 0 8px;font-size:1.25rem}
+    .card p{margin:0 0 15px;color:var(--muted);font-size:.94rem}
+    .text-link{color:var(--green);font-weight:800;font-size:.92rem}
+    .about{background:var(--cream)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:54px}
+    .about-image{height:430px;border-radius:28px;overflow:hidden;background:#dce8d8}
+    .about-image img{width:100%;height:100%;object-fit:cover}
+    .about-copy h2{font-size:clamp(2rem,3.5vw,3.1rem);line-height:1.12;letter-spacing:-.04em;margin:14px 0}
+    .about-copy p{color:var(--muted)}
+    .values{display:grid;gap:15px;margin:24px 0}
+    .value{display:flex;gap:13px;align-items:flex-start}
+    .value-icon{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;background:#e2eee0;flex-shrink:0}
+    .value b{display:block}.value span{font-size:.9rem;color:var(--muted)}
+    .join{background:var(--green);color:white}
+    .join-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:start}
+    .join h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.08;letter-spacing:-.04em;margin:13px 0}
+    .join-copy p{color:#d6e5d9}
+    .join-points{display:grid;gap:12px;margin-top:25px;color:#e5efe7}
+    .join-points span:before{content:"✓";display:inline-grid;place-items:center;margin-right:10px;width:24px;height:24px;border-radius:50%;background:#ffffff20;color:#d5e9d5}
+    .form-card{background:white;color:var(--ink);border-radius:24px;padding:28px}
+    .form-card h3{font-size:1.4rem;margin:0 0 5px}
+    .form-card>p{margin:0 0 20px;color:var(--muted);font-size:.9rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:6px}.field.full{grid-column:1/-1}
+    label{font-size:.85rem;font-weight:750}
+    input,select,textarea{width:100%;padding:12px 13px;border:1px solid #dce5dc;border-radius:11px;background:#fbfcfa;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--green2);box-shadow:0 0 0 3px #2e795a1a}
+    textarea{resize:vertical;min-height:90px}
+    .form-card .btn{width:100%;margin-top:16px}
+    .form-note{font-size:.76rem;color:#758279;margin-top:12px}
+    .form-message{display:none;margin-top:14px;padding:12px;border-radius:10px;background:#eaf5e8;color:#205c3c;font-size:.9rem}
+    .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .contact-item{padding:22px;border:1px solid #e3ebe3;border-radius:18px}
+    .contact-item .icon{font-size:1.5rem}.contact-item h3{margin:10px 0 4px}.contact-item p{margin:0;color:var(--muted);font-size:.92rem}
+    footer{background:#133c2c;color:#e5efe7;padding:40px 0 22px}
+    .footer-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;padding-bottom:28px}
+    footer .brand small{color:#c0d4c5}footer .brand-mark{background:#ffffff18}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.9rem;color:#d2e1d5}
+    .footer-bottom{border-top:1px solid #ffffff22;padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#b9cdbf;font-size:.8rem}
+    .demo-label{position:fixed;bottom:12px;right:12px;z-index:20;background:#f7e7b2;color:#594a20;border:1px solid #e4d18c;padding:8px 12px;border-radius:999px;font-size:.76rem;font-weight:800;box-shadow:0 5px 20px #0001}
+    @media(max-width:850px){.nav-links{gap:14px}.hero-grid{gap:25px;padding:55px 0}.hero-art{min-height:360px}.cards{grid-template-columns:repeat(2,1fr)}.cards .card:last-child{grid-column:1/-1}.about-grid,.join-grid{gap:32px}.about-image{height:380px}}
+    @media(max-width:680px){.topbar .container{justify-content:center;text-align:center}.nav{min-height:68px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid #e5ebe5;padding:18px 5% 22px;flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:11px 0}.nav-links .btn{margin-top:8px}.hero-grid{grid-template-columns:1fr;padding:48px 0 58px}.hero-art{min-height:330px}.hero-photo{inset:0 0 8px 10px}.floating-card{left:0;top:18px}.hero h1{font-size:clamp(2.7rem,13vw,4rem)}section{padding:62px 0}.impact-grid{grid-template-columns:1fr}.impact-item+.impact-item{border-left:0;border-top:1px solid #e3ebe3}.impact-item{padding:18px}.cards{grid-template-columns:1fr}.cards .card:last-child{grid-column:auto}.card-img{height:230px}.about-grid,.join-grid{grid-template-columns:1fr}.about-image{height:300px;order:2}.about-copy{order:1}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.contact-grid{grid-template-columns:1fr}.footer-top{flex-direction:column}.footer-links{gap:14px}.form-card{padding:22px}.demo-label{bottom:8px;right:8px;font-size:.68rem}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>💚 İyilik paylaştıkça çoğalır</span><span>Birlikte daha umut dolu yarınlara</span></div></div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#anasayfa" aria-label="Birlikte İyilik ana sayfa">
+        <span class="brand-mark">♡</span><span>BİRLİKTE İYİLİK<small>Gönüllülük ve Dayanışma Derneği</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#anasayfa">Ana Sayfa</a><a href="#hakkimizda">Hakkımızda</a><a href="#projeler">Projelerimiz</a><a href="#iletisim">İletişim</a>
+        <a class="btn btn-primary" href="#gonullu">Gönüllü Ol ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="anasayfa">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">İyilik için bir aradayız</div>
+          <h1>Küçük bir iyilik,<br><span>büyük bir değişim.</span></h1>
+          <p>Dayanışmayla hayatlara dokunuyor, gönüllülerimizle daha güzel bir gelecek için çalışıyoruz. Sen de bu hikâyenin bir parçası ol.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#gonullu">Gönüllü Ol <span aria-hidden="true">&nbsp;↗</span></a><a class="btn btn-light" href="#projeler">Projelerimizi Keşfet</a></div>
+          <div class="hero-note"><div class="avatar-stack"><span class="avatar">💚</span><span class="avatar">🤝</span><span class="avatar">🌱</span></div><span>Her katkı değerli, her gönüllü önemli.</span></div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-photo"><img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1100&q=85" alt="Topluluk çalışmasında bir araya gelen gönüllüler" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#9fbea0,#376e50)'"></div>
+          <div class="floating-card"><b>İyilik burada başlar</b><small>Birlikte daha güçlüyüz.</small></div>
+          <div class="photo-caption"><div><strong>İyilik bir ekip işidir.</strong><span>Birlikte, umutla, dayanışmayla.</span></div><span style="font-size:1.5rem">↗</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div class="container impact-grid">
+        <div class="impact-item"><strong>Birlik</strong><span>Ortak bir amaç için</span></div>
+        <div class="impact-item"><strong>Dayanışma</strong><span>Yan yana, omuz omuza</span></div>
+        <div class="impact-item"><strong>Umut</strong><span>Daha iyi bir gelecek için</span></div>
+      </div>
+    </section>
+
+    <section id="projeler">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Birlikte neler yapıyoruz?</div><h2>İyiliğin farklı yolları var.</h2><p>Her insanın katkı sunabileceği bir alan olduğuna inanıyoruz. Senin ilgi alanın hangisi?</p></div>
+        <div class="cards">
+          <article class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Yardım kolileri hazırlayan gönüllüler" loading="lazy"></div><div class="card-body"><span class="tag">Sosyal Dayanışma</span><h3>Paylaşmanın Gücü</h3><p>İhtiyaç sahiplerine ulaşmak ve toplumsal dayanışmayı güçlendirmek için birlikte çalışıyoruz.</p><a class="text-link" href="#gonullu">Katkı sun →</a></div></article>
+          <article class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80" alt="Birlikte çalışan gönüllü ekibi" loading="lazy"></div><div class="card-body"><span class="tag">Gönüllülük</span><h3>Zamanını İyiliğe Ayır</h3><p>Yeteneklerini ve zamanını paylaşarak yaşadığın çevrede olumlu bir fark oluştur.</p><a class="text-link" href="#gonullu">Ekibe katıl →</a></div></article>
+          <article class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=800&q=80" alt="Yeşil doğa ve orman" loading="lazy"></div><div class="card-body"><span class="tag">Çevre ve Gelecek</span><h3>Doğaya İyi Bak</h3><p>Çevre bilincini yaygınlaştıran ve daha yaşanabilir bir gelecek hedefleyen çalışmalar.</p><a class="text-link" href="#gonullu">Bize katıl →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="hakkimizda">
+      <div class="container about-grid">
+        <div class="about-image"><img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1000&q=85" alt="Birlikte çalışma yapan gönüllüler" loading="lazy"></div>
+        <div class="about-copy"><div class="eyebrow">Biz kimiz?</div><h2>İyiliğin olduğu yerde umut vardır.</h2><p>Birlikte İyilik, insanların ortak amaçlar etrafında buluştuğu örnek bir gönüllü derneği web sitesi konseptidir. Amacımız, dayanışma kültürünü güçlendirmek ve gönüllülüğe katılmayı kolaylaştırmaktır.</p>
+          <div class="values">
+            <div class="value"><div class="value-icon">♡</div><div><b>İnsana değer veririz</b><span>Her bireyin onurunu ve ihtiyaçlarını önemseriz.</span></div></div>
+            <div class="value"><div class="value-icon">🤝</div><div><b>Birlikte hareket ederiz</b><span>İş birliği ve karşılıklı güvenle ilerleriz.</span></div></div>
+            <div class="value"><div class="value-icon">🌱</div><div><b>Kalıcı faydayı hedefleriz</b><span>Uzun vadeli ve sorumlu çözümleri destekleriz.</span></div></div>
+          </div>
+          <a class="btn btn-primary" href="#iletisim">Bize Ulaşın</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="join" id="gonullu">
+      <div class="container join-grid">
+        <div class="join-copy"><div class="eyebrow" style="color:#d5e8d8">İyiliğe sen de katıl</div><h2>Birlikte daha güzel bir gelecek mümkün.</h2><p>Gönüllülük yolculuğuna ilk adımını at. İlgi alanlarını bize anlat; sana uygun katkı alanlarını birlikte keşfedelim.</p>
+          <div class="join-points"><span>İlgi alanına uygun gönüllülük fırsatları</span><span>Dayanışma içinde çalışan bir topluluk</span><span>Paylaşarak öğrenme ve gelişme imkânı</span></div>
+        </div>
+        <div class="form-card"><h3>Gönüllü başvuru formu</h3><p>Demo formudur. Gönderilen bilgiler bir sunucuya kaydedilmez.</p>
+          <form id="volunteerForm">
+            <div class="form-grid">
+              <div class="field"><label for="fullName">Ad Soyad *</label><input id="fullName" name="fullName" autocomplete="name" required placeholder="Adınız ve soyadınız"></div>
+              <div class="field"><label for="email">E-posta *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="ornek@mail.com"></div>
+              <div class="field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="05xx xxx xx xx"></div>
+              <div class="field"><label for="interest">İlgi alanınız *</label><select id="interest" name="interest" required><option value="">Seçiniz</option><option>Sosyal yardımlaşma</option><option>Çevre ve doğa</option><option>Eğitim</option><option>Etkinlik organizasyonu</option><option>İletişim ve tasarım</option><option>Diğer</option></select></div>
+              <div class="field full"><label for="message">Kısaca kendinizden bahsedin</label><textarea id="message" name="message" placeholder="Nasıl katkı sunmak istersiniz?"></textarea></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Demo Başvurusu Gönder ↗</button>
+            <div class="form-message" id="formMessage" role="status"></div>
+            <div class="form-note">* zorunlu alanlar. Gerçek kullanım öncesinde gizlilik metni ve güvenli veri işleme altyapısı eklenmelidir.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">İletişim</div><h2>Birlikte konuşalım.</h2><p>Dernek hakkında bilgi almak veya gönüllülük fırsatlarını öğrenmek için bize ulaş.</p></div>
+        <div class="contact-grid">
+          <div class="contact-item"><div class="icon">✉️</div><h3>E-posta</h3><p>info@ornekdernek.org<br><small>Demo iletişim bilgisi</small></p></div>
+          <div class="contact-item"><div class="icon">📍</div><h3>Adres</h3><p>Dernek adresi buraya eklenecek.<br><small>Örnek konum</small></p></div>
+          <div class="contact-item"><div class="icon">☎️</div><h3>Telefon</h3><p>+90 5XX XXX XX XX<br><small>Gerçek numarayla değiştirin</small></p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <a class="brand" href="#anasayfa"><span class="brand-mark">♡</span><span>BİRLİKTE İYİLİK<small>Gönüllülük ve Dayanışma Derneği</small></span></a>
+        <div class="footer-links"><a href="#hakkimizda">Hakkımızda</a><a href="#projeler">Projelerimiz</a><a href="#gonullu">Gönüllü Ol</a><a href="#iletisim">İletişim</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Birlikte İyilik — Demo web sitesi.</span><span>İyilik paylaştıkça çoğalır. 💚</span></div>
+    </div>
+  </footer>
+  <div class="demo-label">ÖRNEK DEMO · TEMSİLİ BİLGİLER</div>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('volunteerForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const message = document.getElementById('formMessage');
+      message.textContent = `Teşekkürler ${name}! Demo başvurun görüntülendi. Bu örnek form bilgileri kaydetmez veya göndermez.`;
+      message.style.display = 'block';
+      message.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+  </script>
+</body>
+</html>
